@@ -1,0 +1,36 @@
+const router = require("express").Router();
+const ChatDetails = require("../Models/chatDetails");
+
+
+// post method which need to have all the details to post the data to the dab
+router.post("/", (req, res) => {
+    console.log("hithere");
+    const newChat = req.body;
+
+    const chatDetails = new ChatDetails(
+        newChat
+      
+    );
+
+    chatDetails
+        .save()
+        .then((result) => {
+            res.status(200).send({ result });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
+});
+
+
+//get all the chat related details api
+router.get("/", async (req, res) => {
+    try {
+        const chatDetails = await ChatDetails.find();
+        res.send(chatDetails);
+    } catch (error) {
+        res.send(`Error - ${error}`);
+    }
+});
+
+module.exports = router;

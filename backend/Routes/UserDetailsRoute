@@ -1,0 +1,36 @@
+const router = require("express").Router();
+const UserDetails = require("../Models/userDetails");
+
+
+// post method which need to have all the details to post the data to the dab
+router.post("/", (req, res) => {
+    console.log("hithere");
+    const newUser = req.body;
+
+    const userDetail = new UserDetails(
+        newUser
+      
+    );
+
+    userDetail
+        .save()
+        .then((result) => {
+            res.status(200).send({ result });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
+});
+
+
+//get all the book related details api
+router.get("/", async (req, res) => {
+    try {
+        const userDetail = await UserDetails.find();
+        res.send(userDetail);
+    } catch (error) {
+        res.send(`Error - ${error}`);
+    }
+});
+
+module.exports = router;

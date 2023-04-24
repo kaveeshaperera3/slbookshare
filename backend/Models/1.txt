@@ -1,0 +1,7 @@
+mongodb+srv://kaveeshaperera:kaveesha123@cluster0.swmn3fq.mongodb.net/?retryWrites=true&w=majority
+
+
+
+
+
+D:\fuelizer_12\Fuelizer\Fuelizer-Backend\Fuelizer\Fuelizer\Properties\PublishProfiles\FolderProfile.pubxml' created.
